@@ -1,4 +1,12 @@
 /* ==========================================================================
+   KHURIN — Product Cards, Filters, Catalog, & Cart Drawer
+   ========================================================================== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 50px;
+/* ==========================================================================
   NASHIFA — Variables, Reset, Navigation, Hero, & Marquee
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Syne:wght@600;700;800&display=swap');
@@ -46,6 +54,11 @@ button, input, textarea {
   font: inherit;
 }
 
+.product-photo {
+  position: relative;
+  aspect-ratio: .83;
+  overflow: hidden;
+  background: var(--surface);
 button {
   cursor: pointer;
 }
@@ -62,6 +75,11 @@ button {
   backdrop-filter: blur(18px);
 }
 
+.product-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .6s;
 .nav {
   height: 66px;
   padding: 0 20px;
@@ -78,6 +96,18 @@ button {
   align-items: center;
 }
 
+.product-card:hover img {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.tag {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: var(--lime);
+  color: #111;
+  padding: 5px 8px;
+  font-size: 9px;
 .logo-mark {
   width: 28px;
   height: 28px;
@@ -92,6 +122,17 @@ button {
   color: var(--lime);
 }
 
+.add {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  border: 0;
+  background: var(--text);
+  color: var(--bg);
+  padding: 9px 12px;
+  font-size: 10px;
+  opacity: 0;
+  transition: .25s;
 .nav-links {
   display: flex;
   gap: 30px;
@@ -123,6 +164,8 @@ button {
   gap: 8px;
 }
 
+.product-card:hover .add {
+  opacity: 1;
 .icon-btn, .cart-btn, .menu-btn {
   border: 1px solid var(--line);
   background: transparent;
@@ -155,6 +198,88 @@ button {
   padding-right: 5vw;
 }
 
+.product-info {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 15px;
+}
+
+.product-info h3 {
+  font: 600 16px Syne;
+  margin: 6px 0;
+}
+
+.product-info strong {
+  font-size: 11px;
+}
+
+.rating {
+  font-size: 10px;
+  color: var(--lime);
+  margin-top: 8px;
+}
+
+.rating span {
+  color: var(--muted);
+  margin-left: 8px;
+}
+
+.filters {
+  border-top: 1px solid var(--line);
+  padding: 20px 0;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 9px 13px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.filter.active,
+.filter:hover {
+  background: var(--lime);
+  color: #111;
+  border-color: var(--lime);
+}
+
+.catalog {
+  padding-bottom: 13vw;
+}
+
+.drawer {
+  position: fixed;
+  inset: 0;
+  background: #0009;
+  z-index: 20;
+}
+
+.drawer-panel {
+  margin-left: auto;
+  height: 100%;
+  width: min(450px, 100%);
+  background: var(--bg);
+  padding: 30px;
+  animation: slide .4s;
+}
+
+.drawer-head {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 15px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
 .hero {
   position: relative;
   min-height: calc(100vh - 80px);
@@ -258,6 +383,10 @@ button {
   z-index: -1;
 }
 
+.cart-item img {
+  width: 75px;
+  height: 90px;
+  object-fit: cover;
 .hero-card {
   position: absolute;
   bottom: 12%;
@@ -293,6 +422,9 @@ button {
   z-index: 3;
 }
 
+.cart-item h3 {
+  font: 600 15px Syne;
+  margin: 3px 0;
 .marquee-track {
   display: flex;
   width: max-content;
@@ -308,6 +440,16 @@ button {
   animation-play-state: paused;
 }
 
+.cart-total {
+  border-top: 1px solid var(--line);
+  margin-top: 15px;
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-total strong {
+  font: 700 20px Syne;
 .section {
   padding-top: 13vw;
   padding-bottom: 13vw;
@@ -331,6 +473,10 @@ button {
   margin-top: 8vw;
 }
 
+.empty {
+  text-align: center;
+  padding-top: 35vh;
+  color: var(--muted);
 .intro h2, .manifesto h2 {
   font: 700 clamp(2.5rem, 5vw, 5rem)/.95 Syne;
   letter-spacing: -.06em;
